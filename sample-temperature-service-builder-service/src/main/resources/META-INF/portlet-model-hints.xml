@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="it.dontesta.labs.services.temperature.model.Temperature">
+		<field name="uuid" type="String" />
+		<field name="temperatureId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="deviceId" type="String" />
+		<field name="value" type="int" />
+	</model>
+</model-hints>

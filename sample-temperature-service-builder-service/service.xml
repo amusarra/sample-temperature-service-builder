@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_0_0.dtd">
+
+<service-builder package-path="it.dontesta.labs.services.temperature">
+	<namespace>DNTLABS</namespace>
+	<entity local-service="true" name="Temperature" remote-service="true" uuid="true">
+
+		<!-- PK fields -->
+
+		<column name="temperatureId" primary="true" type="long" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+
+		<column name="deviceId" type="String" />
+		<column name="value" type="int" />
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="deviceId" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="deviceId" return-type="Collection">
+			<finder-column name="deviceId" />
+		</finder>
+	</entity>
+</service-builder>

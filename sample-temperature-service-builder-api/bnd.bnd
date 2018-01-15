@@ -1,0 +1,9 @@
+Bundle-Name: sample-temperature-service-builder-api
+Bundle-SymbolicName: it.dontesta.labs.services.temperature.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	it.dontesta.labs.services.temperature.exception,\
+	it.dontesta.labs.services.temperature.model,\
+	it.dontesta.labs.services.temperature.service,\
+	it.dontesta.labs.services.temperature.service.persistence
+-includeresource: META-INF/service.xml=../sample-temperature-service-builder-service/service.xml
