@@ -70,6 +70,7 @@ public class TemperatureWrapper implements Temperature,
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("deviceId", getDeviceId());
 		attributes.put("value", getValue());
+		attributes.put("status", getStatus());
 
 		return attributes;
 	}
@@ -135,6 +136,12 @@ public class TemperatureWrapper implements Temperature,
 		if (value != null) {
 			setValue(value);
 		}
+
+		Integer status = (Integer)attributes.get("status");
+
+		if (status != null) {
+			setStatus(status);
+		}
 	}
 
 	@Override
@@ -166,6 +173,16 @@ public class TemperatureWrapper implements Temperature,
 	public int compareTo(
 		it.dontesta.labs.services.temperature.model.Temperature temperature) {
 		return _temperature.compareTo(temperature);
+	}
+
+	/**
+	* Returns the status of this temperature.
+	*
+	* @return the status of this temperature
+	*/
+	@Override
+	public int getStatus() {
+		return _temperature.getStatus();
 	}
 
 	/**
@@ -417,6 +434,16 @@ public class TemperatureWrapper implements Temperature,
 	@Override
 	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
 		_temperature.setPrimaryKeyObj(primaryKeyObj);
+	}
+
+	/**
+	* Sets the status of this temperature.
+	*
+	* @param status the status of this temperature
+	*/
+	@Override
+	public void setStatus(int status) {
+		_temperature.setStatus(status);
 	}
 
 	/**

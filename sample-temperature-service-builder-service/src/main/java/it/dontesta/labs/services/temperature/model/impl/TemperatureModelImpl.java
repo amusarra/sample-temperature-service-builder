@@ -82,7 +82,8 @@ public class TemperatureModelImpl extends BaseModelImpl<Temperature>
 			{ "createDate", Types.TIMESTAMP },
 			{ "modifiedDate", Types.TIMESTAMP },
 			{ "deviceId", Types.VARCHAR },
-			{ "value", Types.INTEGER }
+			{ "value", Types.INTEGER },
+			{ "status", Types.INTEGER }
 		};
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP = new HashMap<String, Integer>();
 
@@ -97,9 +98,10 @@ public class TemperatureModelImpl extends BaseModelImpl<Temperature>
 		TABLE_COLUMNS_MAP.put("modifiedDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("deviceId", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("value", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("status", Types.INTEGER);
 	}
 
-	public static final String TABLE_SQL_CREATE = "create table DNTLABS_Temperature (uuid_ VARCHAR(75) null,temperatureId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,deviceId VARCHAR(75) null,value INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table DNTLABS_Temperature (uuid_ VARCHAR(75) null,temperatureId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,deviceId VARCHAR(75) null,value INTEGER,status INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table DNTLABS_Temperature";
 	public static final String ORDER_BY_JPQL = " ORDER BY temperature.deviceId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY DNTLABS_Temperature.deviceId ASC";
@@ -118,7 +120,8 @@ public class TemperatureModelImpl extends BaseModelImpl<Temperature>
 	public static final long COMPANYID_COLUMN_BITMASK = 1L;
 	public static final long DEVICEID_COLUMN_BITMASK = 2L;
 	public static final long GROUPID_COLUMN_BITMASK = 4L;
-	public static final long UUID_COLUMN_BITMASK = 8L;
+	public static final long STATUS_COLUMN_BITMASK = 8L;
+	public static final long UUID_COLUMN_BITMASK = 16L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -143,6 +146,7 @@ public class TemperatureModelImpl extends BaseModelImpl<Temperature>
 		model.setModifiedDate(soapModel.getModifiedDate());
 		model.setDeviceId(soapModel.getDeviceId());
 		model.setValue(soapModel.getValue());
+		model.setStatus(soapModel.getStatus());
 
 		return model;
 	}
@@ -217,6 +221,7 @@ public class TemperatureModelImpl extends BaseModelImpl<Temperature>
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("deviceId", getDeviceId());
 		attributes.put("value", getValue());
+		attributes.put("status", getStatus());
 
 		attributes.put("entityCacheEnabled", isEntityCacheEnabled());
 		attributes.put("finderCacheEnabled", isFinderCacheEnabled());
@@ -284,6 +289,12 @@ public class TemperatureModelImpl extends BaseModelImpl<Temperature>
 
 		if (value != null) {
 			setValue(value);
+		}
+
+		Integer status = (Integer)attributes.get("status");
+
+		if (status != null) {
+			setStatus(status);
 		}
 	}
 
@@ -476,6 +487,29 @@ public class TemperatureModelImpl extends BaseModelImpl<Temperature>
 		_value = value;
 	}
 
+	@JSON
+	@Override
+	public int getStatus() {
+		return _status;
+	}
+
+	@Override
+	public void setStatus(int status) {
+		_columnBitmask |= STATUS_COLUMN_BITMASK;
+
+		if (!_setOriginalStatus) {
+			_setOriginalStatus = true;
+
+			_originalStatus = _status;
+		}
+
+		_status = status;
+	}
+
+	public int getOriginalStatus() {
+		return _originalStatus;
+	}
+
 	@Override
 	public StagedModelType getStagedModelType() {
 		return new StagedModelType(PortalUtil.getClassNameId(
@@ -523,6 +557,7 @@ public class TemperatureModelImpl extends BaseModelImpl<Temperature>
 		temperatureImpl.setModifiedDate(getModifiedDate());
 		temperatureImpl.setDeviceId(getDeviceId());
 		temperatureImpl.setValue(getValue());
+		temperatureImpl.setStatus(getStatus());
 
 		temperatureImpl.resetOriginalValues();
 
@@ -597,6 +632,10 @@ public class TemperatureModelImpl extends BaseModelImpl<Temperature>
 
 		temperatureModelImpl._originalDeviceId = temperatureModelImpl._deviceId;
 
+		temperatureModelImpl._originalStatus = temperatureModelImpl._status;
+
+		temperatureModelImpl._setOriginalStatus = false;
+
 		temperatureModelImpl._columnBitmask = 0;
 	}
 
@@ -656,12 +695,14 @@ public class TemperatureModelImpl extends BaseModelImpl<Temperature>
 
 		temperatureCacheModel.value = getValue();
 
+		temperatureCacheModel.status = getStatus();
+
 		return temperatureCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(21);
+		StringBundler sb = new StringBundler(23);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
@@ -683,6 +724,8 @@ public class TemperatureModelImpl extends BaseModelImpl<Temperature>
 		sb.append(getDeviceId());
 		sb.append(", value=");
 		sb.append(getValue());
+		sb.append(", status=");
+		sb.append(getStatus());
 		sb.append("}");
 
 		return sb.toString();
@@ -690,7 +733,7 @@ public class TemperatureModelImpl extends BaseModelImpl<Temperature>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(34);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("<model><model-name>");
 		sb.append("it.dontesta.labs.services.temperature.model.Temperature");
@@ -736,6 +779,10 @@ public class TemperatureModelImpl extends BaseModelImpl<Temperature>
 			"<column><column-name>value</column-name><column-value><![CDATA[");
 		sb.append(getValue());
 		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>status</column-name><column-value><![CDATA[");
+		sb.append(getStatus());
+		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -763,6 +810,9 @@ public class TemperatureModelImpl extends BaseModelImpl<Temperature>
 	private String _deviceId;
 	private String _originalDeviceId;
 	private int _value;
+	private int _status;
+	private int _originalStatus;
+	private boolean _setOriginalStatus;
 	private long _columnBitmask;
 	private Temperature _escapedModel;
 }

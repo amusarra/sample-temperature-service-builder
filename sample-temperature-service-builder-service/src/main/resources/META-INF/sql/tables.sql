@@ -8,5 +8,6 @@ create table DNTLABS_Temperature (
 	createDate DATE null,
 	modifiedDate DATE null,
 	deviceId VARCHAR(75) null,
-	value INTEGER
+	value INTEGER,
+	status INTEGER
 );

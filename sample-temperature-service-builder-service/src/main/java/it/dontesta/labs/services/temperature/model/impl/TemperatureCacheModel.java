@@ -66,7 +66,7 @@ public class TemperatureCacheModel implements CacheModel<Temperature>,
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(21);
+		StringBundler sb = new StringBundler(23);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -88,6 +88,8 @@ public class TemperatureCacheModel implements CacheModel<Temperature>,
 		sb.append(deviceId);
 		sb.append(", value=");
 		sb.append(value);
+		sb.append(", status=");
+		sb.append(status);
 		sb.append("}");
 
 		return sb.toString();
@@ -138,6 +140,7 @@ public class TemperatureCacheModel implements CacheModel<Temperature>,
 		}
 
 		temperatureImpl.setValue(value);
+		temperatureImpl.setStatus(status);
 
 		temperatureImpl.resetOriginalValues();
 
@@ -161,6 +164,8 @@ public class TemperatureCacheModel implements CacheModel<Temperature>,
 		deviceId = objectInput.readUTF();
 
 		value = objectInput.readInt();
+
+		status = objectInput.readInt();
 	}
 
 	@Override
@@ -199,6 +204,8 @@ public class TemperatureCacheModel implements CacheModel<Temperature>,
 		}
 
 		objectOutput.writeInt(value);
+
+		objectOutput.writeInt(status);
 	}
 
 	public String uuid;
@@ -211,4 +218,5 @@ public class TemperatureCacheModel implements CacheModel<Temperature>,
 	public long modifiedDate;
 	public String deviceId;
 	public int value;
+	public int status;
 }

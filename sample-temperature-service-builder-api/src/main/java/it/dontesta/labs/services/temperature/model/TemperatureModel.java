@@ -239,6 +239,20 @@ public interface TemperatureModel extends BaseModel<Temperature>, GroupedModel,
 	 */
 	public void setValue(int value);
 
+	/**
+	 * Returns the status of this temperature.
+	 *
+	 * @return the status of this temperature
+	 */
+	public int getStatus();
+
+	/**
+	 * Sets the status of this temperature.
+	 *
+	 * @param status the status of this temperature
+	 */
+	public void setStatus(int status);
+
 	@Override
 	public boolean isNew();
 

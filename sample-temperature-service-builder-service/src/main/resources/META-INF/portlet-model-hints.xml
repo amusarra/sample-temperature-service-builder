@@ -12,5 +12,6 @@
 		<field name="modifiedDate" type="Date" />
 		<field name="deviceId" type="String" />
 		<field name="value" type="int" />
+		<field name="status" type="int" />
 	</model>
 </model-hints>

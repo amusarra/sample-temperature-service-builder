@@ -25,6 +25,7 @@
 
 		<column name="deviceId" type="String" />
 		<column name="value" type="int" />
+		<column name="status" type="int" />
 
 		<!-- Order -->
 
@@ -36,6 +37,9 @@
 
 		<finder name="deviceId" return-type="Collection">
 			<finder-column name="deviceId" />
+		</finder>
+		<finder name="status" return-type="Collection">
+			<finder-column name="status" />
 		</finder>
 	</entity>
 </service-builder>

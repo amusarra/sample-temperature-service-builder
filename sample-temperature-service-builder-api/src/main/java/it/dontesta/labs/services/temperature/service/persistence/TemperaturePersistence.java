@@ -503,6 +503,138 @@ public interface TemperaturePersistence extends BasePersistence<Temperature> {
 	public int countBydeviceId(java.lang.String deviceId);
 
 	/**
+	* Returns all the temperatures where status = &#63;.
+	*
+	* @param status the status
+	* @return the matching temperatures
+	*/
+	public java.util.List<Temperature> findBystatus(int status);
+
+	/**
+	* Returns a range of all the temperatures where status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link TemperatureModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param status the status
+	* @param start the lower bound of the range of temperatures
+	* @param end the upper bound of the range of temperatures (not inclusive)
+	* @return the range of matching temperatures
+	*/
+	public java.util.List<Temperature> findBystatus(int status, int start,
+		int end);
+
+	/**
+	* Returns an ordered range of all the temperatures where status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link TemperatureModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param status the status
+	* @param start the lower bound of the range of temperatures
+	* @param end the upper bound of the range of temperatures (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching temperatures
+	*/
+	public java.util.List<Temperature> findBystatus(int status, int start,
+		int end,
+		com.liferay.portal.kernel.util.OrderByComparator<Temperature> orderByComparator);
+
+	/**
+	* Returns an ordered range of all the temperatures where status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link TemperatureModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param status the status
+	* @param start the lower bound of the range of temperatures
+	* @param end the upper bound of the range of temperatures (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @param retrieveFromCache whether to retrieve from the finder cache
+	* @return the ordered range of matching temperatures
+	*/
+	public java.util.List<Temperature> findBystatus(int status, int start,
+		int end,
+		com.liferay.portal.kernel.util.OrderByComparator<Temperature> orderByComparator,
+		boolean retrieveFromCache);
+
+	/**
+	* Returns the first temperature in the ordered set where status = &#63;.
+	*
+	* @param status the status
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching temperature
+	* @throws NoSuchTemperatureException if a matching temperature could not be found
+	*/
+	public Temperature findBystatus_First(int status,
+		com.liferay.portal.kernel.util.OrderByComparator<Temperature> orderByComparator)
+		throws NoSuchTemperatureException;
+
+	/**
+	* Returns the first temperature in the ordered set where status = &#63;.
+	*
+	* @param status the status
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching temperature, or <code>null</code> if a matching temperature could not be found
+	*/
+	public Temperature fetchBystatus_First(int status,
+		com.liferay.portal.kernel.util.OrderByComparator<Temperature> orderByComparator);
+
+	/**
+	* Returns the last temperature in the ordered set where status = &#63;.
+	*
+	* @param status the status
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching temperature
+	* @throws NoSuchTemperatureException if a matching temperature could not be found
+	*/
+	public Temperature findBystatus_Last(int status,
+		com.liferay.portal.kernel.util.OrderByComparator<Temperature> orderByComparator)
+		throws NoSuchTemperatureException;
+
+	/**
+	* Returns the last temperature in the ordered set where status = &#63;.
+	*
+	* @param status the status
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching temperature, or <code>null</code> if a matching temperature could not be found
+	*/
+	public Temperature fetchBystatus_Last(int status,
+		com.liferay.portal.kernel.util.OrderByComparator<Temperature> orderByComparator);
+
+	/**
+	* Returns the temperatures before and after the current temperature in the ordered set where status = &#63;.
+	*
+	* @param temperatureId the primary key of the current temperature
+	* @param status the status
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next temperature
+	* @throws NoSuchTemperatureException if a temperature with the primary key could not be found
+	*/
+	public Temperature[] findBystatus_PrevAndNext(long temperatureId,
+		int status,
+		com.liferay.portal.kernel.util.OrderByComparator<Temperature> orderByComparator)
+		throws NoSuchTemperatureException;
+
+	/**
+	* Removes all the temperatures where status = &#63; from the database.
+	*
+	* @param status the status
+	*/
+	public void removeBystatus(int status);
+
+	/**
+	* Returns the number of temperatures where status = &#63;.
+	*
+	* @param status the status
+	* @return the number of matching temperatures
+	*/
+	public int countBystatus(int status);
+
+	/**
 	* Caches the temperature in the entity cache if it is enabled.
 	*
 	* @param temperature the temperature

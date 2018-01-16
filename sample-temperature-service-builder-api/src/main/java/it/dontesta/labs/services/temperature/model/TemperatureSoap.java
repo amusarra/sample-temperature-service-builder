@@ -44,6 +44,7 @@ public class TemperatureSoap implements Serializable {
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setDeviceId(model.getDeviceId());
 		soapModel.setValue(model.getValue());
+		soapModel.setStatus(model.getStatus());
 
 		return soapModel;
 	}
@@ -176,6 +177,14 @@ public class TemperatureSoap implements Serializable {
 		_value = value;
 	}
 
+	public int getStatus() {
+		return _status;
+	}
+
+	public void setStatus(int status) {
+		_status = status;
+	}
+
 	private String _uuid;
 	private long _temperatureId;
 	private long _groupId;
@@ -186,4 +195,5 @@ public class TemperatureSoap implements Serializable {
 	private Date _modifiedDate;
 	private String _deviceId;
 	private int _value;
+	private int _status;
 }

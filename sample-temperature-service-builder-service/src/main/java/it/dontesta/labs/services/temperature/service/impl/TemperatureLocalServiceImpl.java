@@ -15,11 +15,11 @@
 package it.dontesta.labs.services.temperature.service.impl;
 
 import java.util.List;
-import java.util.UUID;
 
 import com.liferay.portal.kernel.exception.PortalException;
 
 import it.dontesta.labs.services.temperature.model.Temperature;
+import it.dontesta.labs.services.temperature.service.TemperatureLocalServiceUtil;
 import it.dontesta.labs.services.temperature.service.base.TemperatureLocalServiceBaseImpl;
 
 /**
@@ -50,13 +50,7 @@ public class TemperatureLocalServiceImpl extends TemperatureLocalServiceBaseImpl
 
 	@Override
 	public Temperature getEntry(long temperatureId) throws PortalException {
-		long entryId = counterLocalService.increment();
-		Temperature temperatureEntry = temperaturePersistence.create(entryId);
-		
-		temperatureEntry.setDeviceId(UUID.randomUUID().toString());
-		temperatureEntry.setValue((int)(Math.random() * ((50 - 10) + 1)) + 10);
-		
-		return temperatureEntry;
+		return TemperatureLocalServiceUtil.getTemperature(temperatureId);
 	}
 
 }

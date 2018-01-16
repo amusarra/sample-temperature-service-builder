@@ -1,5 +1,6 @@
 Bundle-Name: sample-temperature-service-builder-api
 Bundle-SymbolicName: it.dontesta.labs.services.temperature.api
+Bundle-Activator: it.dontesta.labs.services.temperature.activator.TemperatureServiceActivator
 Bundle-Version: 1.0.0
 Export-Package:\
 	it.dontesta.labs.services.temperature.exception,\

@@ -16,5 +16,6 @@
 		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
 		<property name="deviceId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="value" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 	</class>
 </hibernate-mapping>
