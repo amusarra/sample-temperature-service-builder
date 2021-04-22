@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.dontesta.labs.services.temperature.instance.lifecycle;
 
 import java.util.Date;

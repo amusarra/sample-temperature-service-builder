@@ -1,11 +1,36 @@
+buildscript {
+    dependencies {
+        classpath group: "com.gradle", name: "gradle-enterprise-gradle-plugin", version: "3.1"
+        classpath group: "com.liferay", name: "com.liferay.gradle.plugins", version: "latest.release"
+    }
+
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        maven {
+            url "https://repository-cdn.liferay.com/nexus/content/groups/public"
+        }
+    }
+}
+
+
+apply plugin: "com.liferay.plugin"
 apply plugin: 'maven'
 
+plugins.withId("java") {
+    sourceCompatibility = "1.8"
+}
+
+
+repositories {
+    maven {
+        url "https://repository-cdn.liferay.com/nexus/content/groups/public"
+    }
+}
+
 dependencies {
-	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib", version: "3.1.0"
-	compileOnly group: "com.liferay", name: "com.liferay.osgi.util", version: "3.0.0"
-	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.0.0"
-    compileOnly group: "org.osgi", name:"org.osgi.core", version:"6.0.0"
-	compileOnly group: "com.liferay", name:"com.liferay.portal.instance.lifecycle", version:"3.0.0"
+    compileOnly group: "com.liferay.portal", name: "release.portal.api", version: "7.3.5-ga6"
 }
 
 group = "it.dontesta.labs.services.temperature"
