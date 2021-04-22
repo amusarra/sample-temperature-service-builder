@@ -18,7 +18,6 @@ import com.liferay.portal.aop.AopService;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import it.dontesta.labs.services.temperature.model.Temperature;
-import it.dontesta.labs.services.temperature.service.TemperatureLocalServiceUtil;
 import it.dontesta.labs.services.temperature.service.base.TemperatureLocalServiceBaseImpl;
 
 import org.osgi.service.component.annotations.Component;
